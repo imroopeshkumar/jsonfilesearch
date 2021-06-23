@@ -55,7 +55,7 @@ class State:
                 # obj['name']=re.sub('\.json$','', file)
                 # obj['content']=json.loads(open(file, 'r').read())
                 # obj['searchableterms'] = obj['content'][0].keys()
-                obj = fileobj(re.sub('\.json$','', file),json.loads(open(file, 'r').read()) ,json.loads(open(file, 'r').read())[0].keys())
+                obj = fileobj(re.sub('\.json$','', file),json.loads(open(file, 'r').read()) ,list(json.loads(open(file, 'r').read())[0].keys()))
                 searchfilelist.append(obj)
         #     filedict = {re.sub('\.json$', '',file): json.loads(open(file, 'r').read()) for file in jsonfilelist}
             return searchfilelist
@@ -70,4 +70,14 @@ class fileobj:
         self.searchableterms = searchableterms
     
     
-    
+class Result:
+
+    def __init__(self, val, item, filename, matchedon) -> None:
+        self.val = val
+        self.item = item
+        self.filename = filename
+        self.matchedon = matchedon
+        self.subresults =[]
+        pass
+
+    pass
