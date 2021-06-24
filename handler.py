@@ -40,9 +40,6 @@ def search(searchfile,vals, terms,  refobj=None):
                 try:
                     if(item[term]):
 
-                        # if(term =='_id' and val ==68 and searchfile['name']=='users' and item['_id']==68):
-                        #     print('found')
-                            # print('found')
                         if(str(item[term]) == str(val)):
                             if(refobj):
 
@@ -54,45 +51,12 @@ def search(searchfile,vals, terms,  refobj=None):
                                 
                             r = Result(val, item, searchfile.name, term )
                             resultlist.append(r)
-                            
-                            # if(item not in resultlist):
-                            # resultlist.append(item)
+
                 except Exception as e:
                     # print(e)
                     pass
     return resultlist
-    # term = processinput('enter term to search by')
-    # if(not term in  searchfile['searchableterms']):
-    # searchterms = [searchterm for searchterm in searchfile['searchableterms'] if(re.search(term, searchterm))]
-    # if(not any([re.search(term, searchterm) for searchterm in searchfile['searchableterms']])):
-    # if(len(searchterms)<=0):
-        # print('sorry term not matching any searchable term')
-    # else:
-    #     val = processinput('enter value for term')
-    #     print('now searching')
-        
-    #     for item in searchfile['content']:
-    #         for term in searchterms:
-    #             if(str(item[term])==val):
-    #                 if(not item in resultlist):
-    #                     resultlist.append(item)
 
-    #     return resultlist
-
-
-
-
-    # for searchterm in searchfile['searchableterms']:
-    #     if(re.search(term, searchterm)):
-    #         print('now searching')
-    # print('term not found')
-    # if(not any(re.search(term, searchterm)) for searchterm in searchfile['searchableterms']):
-    #     print('term not found please try again')
-    # else: 
-    #     print('now searching')
-
-        
-    pass
 
 
 
@@ -119,7 +83,6 @@ def begintermsearch(fileslist, searchfile):
             searchterms = [searchterm for searchterm in file.searchableterms if(re.search('^{term}.*|.*{term}$'.format(term = term), searchterm))]
 
 
-    # searchterms = [searchterm for searchterm in fileslist[searchfile]['searchableterms'] if(re.search(term, searchterm))]
 
     if(len(searchterms)<=0):
         print('sorry term not found')
@@ -130,26 +93,11 @@ def begintermsearch(fileslist, searchfile):
             return
 
         results = search(mainfile,  val,searchterms,  None)
-        # for file in fileslist:
 
-        #     for result in results:
-        #         for item in file['content']:
 
         allresults = relatedsearch(results, searchfile, fileslist)
 
         return allresults   
-
-        # for term in searchterms:
-        #     for item in mainfile['content']:
-        #         if(item[term]==str(val)):
-
-
-        #         pass
-
-
-        # for file in fileslist:
-        #     for term in searchterms:
-        #         results[file['name']]=search(file['contents'], term, val)
 
         pass
 
@@ -189,8 +137,7 @@ def runsearchmenu(state:State):
 
                 state.searchfile=clearsearchfile(state.searchfile)
             elif(int(option1)==1):
-                # terms = processinput('enter term to search by')
-                # searchterms = [searchterm for searchterm in searchfile['searchableterms'] if(re.search(term, searchterm))]
+
                 results = begintermsearch(state.searchfiles, state.searchfile)
                 print('total results found = {}'.format( countresults(results)))
                 showresults(results)
@@ -219,8 +166,8 @@ def runsearchmenu(state:State):
 def runfullsearch(state):
     results = []
     vals = processinput('enter values to search. if more than one value, separate by \',\'\n').split(',')
-    if(vals == helpcode):
-        return
+    if(vals[0] == helpcode):
+        return None
 
     for file in state.searchfiles:
         results+=search(file,vals, file.searchableterms )
@@ -236,10 +183,11 @@ def runfullsearch(state):
 
 def rundefaultmenu(state):
     [print(x) for x in menuoptions2]
-    option1 = processinput()
-    if(option1==helpcode):
-        return
     try:
+        option1 = processinput()
+        if(option1==helpcode):
+            return
+    
         if(option1.isnumeric()):
             if(int(option1)==1):
                 state.searchfile = setsearchfile(state)
@@ -254,13 +202,6 @@ def rundefaultmenu(state):
     
 
     pass
-    # if(option1=='terms'):
-
-    #             handler.showsearchterms(state1.searchfile['searchableterms'])
-    #         else:
-    #             print('invalidinputtryagain')
-    # pass
-
 
 
 
@@ -277,7 +218,7 @@ def setsearchfile(state: State):
             
             op = processinput()
             if(op==helpcode):
-                pass
+                return
             op=int(op)
             if(op>len(state.filelist)):
                 raise ValueError
@@ -285,21 +226,7 @@ def setsearchfile(state: State):
             else:
                 print('searchfile set = {}'.format(state.searchfiles[op-1].name))
                 return state.searchfiles[op-1].name
-    #             obj = {}
-    #             obj['name']=filelist[op-1]
-    #             obj['content']=readfile(path, filelist[op-1])
-    #             obj['searchableterms'] = [k for (k,v) in obj['content'][0].items()]
 
-
-    #             print('searchfile set = {}'.format(obj['name']))
-    #             return obj
-    #             pass
-    # #         # print('or leave empty if unsure')
-    # #         filechoice = processinput()
-    # #         if(filechoice):
-    # #             return list(filedict.keys())[int(filechoice)]
-    # #         # else:
-    # #         #     return None
         except Exception as e:
             print('error try again')
 
@@ -353,31 +280,6 @@ def createfilelist(path = ''):
             jsonfilelist = [re.sub('\.json$', '',file) for file in allfiles if file.endswith('.json')]
             return jsonfilelist
 
-        # input(('press enter to continue'))
-
-
-# def handleoption1(option1, state1):
-#     if(option1.isnumeric()):
-#         if(int(option1)==1):
-#             state1.searchfile = setsearchfile(state1.filelist)
-#         # print(state1.searchfile[0])
-#         elif(int(option1) ==2):
-#             clearsearchfile(state1)
-
-#         elif(int(option1) ==4):
-#             pass
-#         else:
-#             print('invalidinputtryagain')
-#     elif(option1.isalpha()):
-#         if(option1=='help'):
-#             runhelp()
-#         if(option1=='terms'):
-#             showsearchterms(state1.filedict)
-#         else:
-#             print('invalidinputtryagain')
-           
-#     else:
-#         print('invalidinputtryagain')
 
 def clearsearchfile(searchfile):
     if(not searchfile):

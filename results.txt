@@ -1,0 +1,308 @@
+Total results found = 15
+_id	112
+url	http://initech.zendesk.com/api/v2/organizations/112.json
+external_id	32e979ff-47b4-43b9-8b74-eea1227905d9
+name	Quilk
+domain_names	['valreda.com', 'strozen.com', 'signity.com', 'quantasis.com']
+created_at	2016-01-10T03:21:25 -11:00
+details	MegaCorp
+shared_tickets	False
+tags	['Hall', 'Dorsey', 'Shepard', 'Carter']
+file	organizations
+matchedon	_id
+matched_on_val	112
+================================================================================
+********************************************************************************
+ objects related to current result********************************************************************************
+_id	1a227508-9f39-427c-8f57-1b72f3fab87c
+url	http://initech.zendesk.com/api/v2/tickets/1a227508-9f39-427c-8f57-1b72f3fab87c.json
+external_id	3e5ca820-cd1f-4a02-a18f-11b18e7bb49a
+created_at	2016-04-14T08:32:31 -10:00
+type	incident
+subject	A Catastrophe in Micronesia
+description	Aliquip excepteur fugiat ex minim ea aute eu labore. Sunt eiusmod esse eu non commodo est veniam consequat.
+priority	low
+status	hold
+submitter_id	71
+assignee_id	38.0
+organization_id	112.0
+tags	['Puerto Rico', 'Idaho', 'Oklahoma', 'Louisiana']
+has_incidents	False
+due_at	1471275452000
+via	chat
+file	tickets
+matchedon	organization_id
+matched_on_val	112
+================================================================================
+_id	5507c3f7-27fe-48f1-b01e-46d31715cc62
+url	http://initech.zendesk.com/api/v2/tickets/5507c3f7-27fe-48f1-b01e-46d31715cc62.json
+external_id	84c43214-2b6b-4631-a4bb-64af712e920b
+created_at	2016-01-22T02:20:40 -11:00
+type	question
+subject	A Problem in French Guiana
+description	Dolor anim dolore quis sint excepteur esse pariatur. Occaecat duis incididunt culpa non magna fugiat laborum.
+priority	normal
+status	solved
+submitter_id	10
+assignee_id	53.0
+organization_id	112.0
+tags	['Missouri', 'Alabama', 'Virginia', 'Virgin Islands']
+has_incidents	True
+due_at	None
+via	chat
+file	tickets
+matchedon	organization_id
+matched_on_val	112
+================================================================================
+_id	cb3b726e-9ba0-4e35-b4d6-ee41c29a7185
+url	http://initech.zendesk.com/api/v2/tickets/cb3b726e-9ba0-4e35-b4d6-ee41c29a7185.json
+external_id	19376875-49a7-4540-847b-b25f093b1635
+created_at	2016-05-03T02:44:43 -10:00
+type	incident
+subject	A Problem in Mozambique
+description	Consectetur deserunt aliquip sint voluptate duis. Nostrud laborum et aliquip amet labore quis.
+priority	urgent
+status	closed
+submitter_id	64
+assignee_id	32.0
+organization_id	112.0
+tags	['Iowa', 'North Dakota', 'California', 'Palau']
+has_incidents	True
+due_at	1470349825000
+via	chat
+file	tickets
+matchedon	organization_id
+matched_on_val	112
+================================================================================
+_id	4d22436c-6c26-431b-9083-35ec8e86c57d
+url	http://initech.zendesk.com/api/v2/tickets/4d22436c-6c26-431b-9083-35ec8e86c57d.json
+external_id	9c5fabc0-0406-4356-9bb8-3bd302687572
+created_at	2016-04-11T04:56:30 -10:00
+type	incident
+subject	A Nuisance in Tanzania
+description	Esse fugiat dolore ea amet nisi dolor reprehenderit aute nostrud. Elit amet consectetur sunt sint nulla veniam dolor reprehenderit esse dolor dolore enim ipsum.
+priority	normal
+status	pending
+submitter_id	69
+assignee_id	15.0
+organization_id	112.0
+tags	['Alaska', 'Maryland', 'Iowa', 'North Dakota']
+has_incidents	False
+due_at	1470140513000
+via	chat
+file	tickets
+matchedon	organization_id
+matched_on_val	112
+================================================================================
+_id	0533df4e-488f-45dd-b4b8-e238be0690ed
+url	http://initech.zendesk.com/api/v2/tickets/0533df4e-488f-45dd-b4b8-e238be0690ed.json
+external_id	9c1c4cf6-8984-4b0f-9e29-86d8792e1aa3
+created_at	2016-04-27T07:58:36 -10:00
+type	task
+subject	A Drama in Bulgaria
+description	Ullamco enim nulla sint laboris exercitation sit enim aliquip ad. Sit in proident amet ipsum cupidatat.
+priority	urgent
+status	solved
+submitter_id	17
+assignee_id	47.0
+organization_id	112.0
+tags	['Connecticut', 'Arkansas', 'Missouri', 'Alabama']
+has_incidents	False
+due_at	1471806353000
+via	chat
+file	tickets
+matchedon	organization_id
+matched_on_val	112
+================================================================================
+_id	1a227508-9f39-427c-8f57-1b72f3fab87c
+url	http://initech.zendesk.com/api/v2/tickets/1a227508-9f39-427c-8f57-1b72f3fab87c.json
+external_id	3e5ca820-cd1f-4a02-a18f-11b18e7bb49a
+created_at	2016-04-14T08:32:31 -10:00
+type	incident
+subject	A Catastrophe in Micronesia
+description	Aliquip excepteur fugiat ex minim ea aute eu labore. Sunt eiusmod esse eu non commodo est veniam consequat.
+priority	low
+status	hold
+submitter_id	71
+assignee_id	38.0
+organization_id	112.0
+tags	['Puerto Rico', 'Idaho', 'Oklahoma', 'Louisiana']
+has_incidents	False
+due_at	1471275452000
+via	chat
+file	tickets
+matchedon	organization_id
+matched_on_val	112
+================================================================================
+_id	5507c3f7-27fe-48f1-b01e-46d31715cc62
+url	http://initech.zendesk.com/api/v2/tickets/5507c3f7-27fe-48f1-b01e-46d31715cc62.json
+external_id	84c43214-2b6b-4631-a4bb-64af712e920b
+created_at	2016-01-22T02:20:40 -11:00
+type	question
+subject	A Problem in French Guiana
+description	Dolor anim dolore quis sint excepteur esse pariatur. Occaecat duis incididunt culpa non magna fugiat laborum.
+priority	normal
+status	solved
+submitter_id	10
+assignee_id	53.0
+organization_id	112.0
+tags	['Missouri', 'Alabama', 'Virginia', 'Virgin Islands']
+has_incidents	True
+due_at	None
+via	chat
+file	tickets
+matchedon	organization_id
+matched_on_val	112
+================================================================================
+_id	cb3b726e-9ba0-4e35-b4d6-ee41c29a7185
+url	http://initech.zendesk.com/api/v2/tickets/cb3b726e-9ba0-4e35-b4d6-ee41c29a7185.json
+external_id	19376875-49a7-4540-847b-b25f093b1635
+created_at	2016-05-03T02:44:43 -10:00
+type	incident
+subject	A Problem in Mozambique
+description	Consectetur deserunt aliquip sint voluptate duis. Nostrud laborum et aliquip amet labore quis.
+priority	urgent
+status	closed
+submitter_id	64
+assignee_id	32.0
+organization_id	112.0
+tags	['Iowa', 'North Dakota', 'California', 'Palau']
+has_incidents	True
+due_at	1470349825000
+via	chat
+file	tickets
+matchedon	organization_id
+matched_on_val	112
+================================================================================
+_id	4d22436c-6c26-431b-9083-35ec8e86c57d
+url	http://initech.zendesk.com/api/v2/tickets/4d22436c-6c26-431b-9083-35ec8e86c57d.json
+external_id	9c5fabc0-0406-4356-9bb8-3bd302687572
+created_at	2016-04-11T04:56:30 -10:00
+type	incident
+subject	A Nuisance in Tanzania
+description	Esse fugiat dolore ea amet nisi dolor reprehenderit aute nostrud. Elit amet consectetur sunt sint nulla veniam dolor reprehenderit esse dolor dolore enim ipsum.
+priority	normal
+status	pending
+submitter_id	69
+assignee_id	15.0
+organization_id	112.0
+tags	['Alaska', 'Maryland', 'Iowa', 'North Dakota']
+has_incidents	False
+due_at	1470140513000
+via	chat
+file	tickets
+matchedon	organization_id
+matched_on_val	112
+================================================================================
+_id	0533df4e-488f-45dd-b4b8-e238be0690ed
+url	http://initech.zendesk.com/api/v2/tickets/0533df4e-488f-45dd-b4b8-e238be0690ed.json
+external_id	9c1c4cf6-8984-4b0f-9e29-86d8792e1aa3
+created_at	2016-04-27T07:58:36 -10:00
+type	task
+subject	A Drama in Bulgaria
+description	Ullamco enim nulla sint laboris exercitation sit enim aliquip ad. Sit in proident amet ipsum cupidatat.
+priority	urgent
+status	solved
+submitter_id	17
+assignee_id	47.0
+organization_id	112.0
+tags	['Connecticut', 'Arkansas', 'Missouri', 'Alabama']
+has_incidents	False
+due_at	1471806353000
+via	chat
+file	tickets
+matchedon	organization_id
+matched_on_val	112
+================================================================================
+_id	13
+url	http://initech.zendesk.com/api/v2/users/13.json
+external_id	dce36d80-f143-4b1e-8a2e-47651e367a4e
+name	Wade Moore
+alias	Mr Vera
+created_at	2016-06-02T01:11:48 -10:00
+active	True
+verified	1.0
+shared	False
+locale	en-AU
+timezone	Saudi Arabia
+last_login_at	2012-08-03T05:09:18 -10:00
+email	veramoore@flotonic.com
+phone	8395-652-590
+signature	Don't Worry Be Happy!
+organization_id	112.0
+tags	['Bartonsville', 'Frystown', 'Sparkill', 'Dola']
+suspended	True
+role	end-user
+file	users
+matchedon	organization_id
+matched_on_val	112
+================================================================================
+_id	28
+url	http://initech.zendesk.com/api/v2/users/28.json
+external_id	7331fa71-e718-4232-a5f5-2da364f39f51
+name	Terri Mcmahon
+alias	Miss Mason
+created_at	2016-01-05T08:35:03 -11:00
+active	False
+verified	1.0
+shared	False
+locale	zh-CN
+timezone	Romania
+last_login_at	2015-05-11T11:34:15 -10:00
+email	masonmcmahon@flotonic.com
+phone	9765-473-366
+signature	Don't Worry Be Happy!
+organization_id	112.0
+tags	['Vienna', 'Ypsilanti', 'Idledale', 'Allendale']
+suspended	True
+role	admin
+file	users
+matchedon	organization_id
+matched_on_val	112
+================================================================================
+_id	13
+url	http://initech.zendesk.com/api/v2/users/13.json
+external_id	dce36d80-f143-4b1e-8a2e-47651e367a4e
+name	Wade Moore
+alias	Mr Vera
+created_at	2016-06-02T01:11:48 -10:00
+active	True
+verified	1.0
+shared	False
+locale	en-AU
+timezone	Saudi Arabia
+last_login_at	2012-08-03T05:09:18 -10:00
+email	veramoore@flotonic.com
+phone	8395-652-590
+signature	Don't Worry Be Happy!
+organization_id	112.0
+tags	['Bartonsville', 'Frystown', 'Sparkill', 'Dola']
+suspended	True
+role	end-user
+file	users
+matchedon	organization_id
+matched_on_val	112
+================================================================================
+_id	28
+url	http://initech.zendesk.com/api/v2/users/28.json
+external_id	7331fa71-e718-4232-a5f5-2da364f39f51
+name	Terri Mcmahon
+alias	Miss Mason
+created_at	2016-01-05T08:35:03 -11:00
+active	False
+verified	1.0
+shared	False
+locale	zh-CN
+timezone	Romania
+last_login_at	2015-05-11T11:34:15 -10:00
+email	masonmcmahon@flotonic.com
+phone	9765-473-366
+signature	Don't Worry Be Happy!
+organization_id	112.0
+tags	['Vienna', 'Ypsilanti', 'Idledale', 'Allendale']
+suspended	True
+role	admin
+file	users
+matchedon	organization_id
+matched_on_val	112
+================================================================================
