@@ -33,7 +33,7 @@ duplicates are also listed
 
 ----------------------------aftermath--------------------------
 
-I have not done unit testing since I used up all the time to build this. I infact built another app but was not satisfied with it so i built this. I can do unit testing if I'm given more time. 
+Since my class does not have any methods, i have skipped unit testing 
 
 Looking back I would've improved the modularity a lot more making the methods cleaner. 
 

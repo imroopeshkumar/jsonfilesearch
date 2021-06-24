@@ -28,7 +28,6 @@ relatedsearchdict['tickets']= ["_id","external_id","submitter_id","assignee_id",
 ## method to add matched on attribute to results
 
 def returnmatchedon(row, columns, val):
-    # (json.loads(row.to_json(orient = 'records')))
     l = list(row)
     index = list(row).index(val)
     return (columns[index])
@@ -68,7 +67,7 @@ def runfullsearch(state:ProgramState):
 ## print help message
 
 def runhelp():
-    print('this is a helpful message')
+    print('please follow menu options. ')
     input('press enter to continue\n')
     return helpcode
 
@@ -191,7 +190,6 @@ def rundefault(state:ProgramState):
 
 def clearsearchfile(filechoice):
     if(not filechoice):
-        # return None
         print('no file set\n')
     else:
         print('file choice cleared\n')
@@ -392,7 +390,6 @@ def loadfiles(path='.//'):
             print('error no files found')
             sys.exit('exitting application')
         for file in jsonfilelist:
-            # dataframes[re.sub('\.json$','', file)] = pd.read_json(file)
             dfobj = dataobject(re.sub('\.json$','', file), pd.read_json(file), jsonfilelist.index(file))
             dataobjs[dfobj.name] = dfobj
         
