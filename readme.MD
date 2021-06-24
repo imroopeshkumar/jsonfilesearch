@@ -8,7 +8,11 @@ the program will read all json files in current directory or in path specified. 
 
 the ProgramState object is used to keep track of all files, results, and files chosen to search on. 
 
+the handler2.py file houses all the logic. and since there is only one state object, it is being passed around the program and the stated is read and updated all the time. 
+
 read menu options carefully.
+
+for field search, leaving field empty will search all fields
 
 only exact value matches will be returned
 
@@ -26,3 +30,4 @@ searching all files will return all results with a matching data
 I have not done unit testing since I used up all the time to build this. I infact built another app but was not satisfied with it so i built this. I can do unit testing if I'm given more time. 
 
 Looking back I would've improved the modularity a lot more making the methods cleaner. 
+

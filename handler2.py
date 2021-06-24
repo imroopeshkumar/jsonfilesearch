@@ -15,7 +15,7 @@ welcomemsg = 'Welcome!'
 headermsg = 'Type quit to exit. Press enter after command to continue'
 menuheader = 'Choose your option'
 
-searchmenuoptions=[ 'Press 1 to begin term search', 'Press 2 to clear search file','Press 3 to run search on all files','Press 4 to check which file is set as searchfile','Type \'terms\' to lookup searchable terms', 'Type help to view help', 'Type quit to exit','Type save to save results to file', 'Type results to show previous results']
+searchmenuoptions=[ 'Press 1 to set field to search on', 'Press 2 to clear search file','Press 3 to run search on all files','Press 4 to check which file is set as searchfile','Type \'terms\' to lookup searchable terms', 'Type help to view help', 'Type quit to exit','Type save to save results to file', 'Type results to show previous results']
 defaultmenuoptions = ['Press 1 to set search file', 'Press 3 to run search on all files', 'Type help to view help', 'Press quit to exit','Type save to save results to file', 'Type results to show previous results']
 helpcode = 'HELP000'
 
@@ -116,10 +116,11 @@ def saveresults(results):
                         f.close()
                         for result in result['subresults']:
                             writedetails('results.txt', result)
+            print('saved\n')
     except Exception as e:
         print('unknown error')
         return
-    finally:
+    # finally:
         print('saved\n')
         # print(e)
 
