@@ -1,4 +1,6 @@
 Total results found = 15
+
+
 _id	112
 url	http://initech.zendesk.com/api/v2/organizations/112.json
 external_id	32e979ff-47b4-43b9-8b74-eea1227905d9
@@ -13,7 +15,8 @@ matchedon	_id
 matched_on_val	112
 ================================================================================
 ********************************************************************************
- objects related to current result********************************************************************************
+ objects related to current result
+********************************************************************************
 _id	1a227508-9f39-427c-8f57-1b72f3fab87c
 url	http://initech.zendesk.com/api/v2/tickets/1a227508-9f39-427c-8f57-1b72f3fab87c.json
 external_id	3e5ca820-cd1f-4a02-a18f-11b18e7bb49a

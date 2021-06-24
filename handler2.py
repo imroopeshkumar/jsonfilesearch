@@ -1,5 +1,5 @@
 import json
-from state import Result
+from state2 import Result
 import os
 import sys
 from state2 import ProgramState, dataobject
@@ -8,12 +8,15 @@ import pandas as pd
 import warnings
 warnings.simplefilter(action='ignore')
 
+
+
+## all static menu options
 welcomemsg = 'Welcome!'
 headermsg = 'Type quit to exit. Press enter after command to continue'
 menuheader = 'Choose your option'
 
-searchmenuoptions=[ 'Press 1 to begin term search', 'Press 2 to clear search file','Press 3 to run search on all files','Press 4 to check which file is set as searchfile','Type \'terms\' to lookup searchable terms', 'Type help to view help', 'Type quit to exit']
-defaultmenuoptions = ['Press 1 to set search file', 'Press 3 to run search on all files', 'Type help to view help', 'Press quit to exit']
+searchmenuoptions=[ 'Press 1 to begin term search', 'Press 2 to clear search file','Press 3 to run search on all files','Press 4 to check which file is set as searchfile','Type \'terms\' to lookup searchable terms', 'Type help to view help', 'Type quit to exit','Type save to save results to file', 'Type results to show previous results']
+defaultmenuoptions = ['Press 1 to set search file', 'Press 3 to run search on all files', 'Type help to view help', 'Press quit to exit','Type save to save results to file', 'Type results to show previous results']
 helpcode = 'HELP000'
 
 relatedsearchdict= {}
@@ -22,37 +25,7 @@ relatedsearchdict['organizations']=["_id", "external_id", ]
 relatedsearchdict['tickets']= ["_id","external_id","submitter_id","assignee_id","organization_id"]
 
 
-
-
-
-
-
-
-
-# def search(dfobj:dataobject, fields, vals, refobj=None):
-#     finalresults = []
-#     df = dfobj.df
-#     processedvals = [int(val) if val.isnumeric() else val for val in vals]
-#     # res = df[df.apply(lambda x : x in vals)]
-#     for field in fields: 
-#         res = df[df[field].isin(processedvals)]
-#         res['filename'] = dfobj.name
-#         res['matchedon']= field
-#         res['matched_on_value'] = 
-#         print(res)
-#         results = json.loads(res.to_json(orient = 'records'))
-#         finalresults+=results
-#     return list(set(finalresults))
-
-
-    # for val in vals:
-    #     for result in results:
-    #         r = Result(val, result, dfobj.name, field)
-    #         finalresults.append(r)
-    # return(json.loads(res.to_json(orient = 'records')))
-    # return res
-    # res = dfobj.df[dfobj.df[field]==val]
-
+## method to add matched on attribute to results
 
 def returnmatchedon(row, columns, val):
     # (json.loads(row.to_json(orient = 'records')))
@@ -61,12 +34,12 @@ def returnmatchedon(row, columns, val):
     return (columns[index])
     
         
-
+## run search on all files
 def runfullsearch(state:ProgramState):
     results = []
     vals = processinput(state,'enter values to search. if more than one value, separate by \',\'\n').split(',')
     if(vals[0] == helpcode):
-        return
+        return helpcode
     for name, dfobj in state.dfobjlist.items():
         df = dfobj.df
         for val in vals:
@@ -75,33 +48,31 @@ def runfullsearch(state:ProgramState):
                 val = int(val)
             result = df[df.eq(val).any(axis = 1)]
             if(result.size >0):
-                # return
                 result['filename'] = name
-                # matchedon = []
-                # results+= json.loads(result.to_json(orient = 'records') )
+
                 result['matchedon'] = result.apply(lambda x: returnmatchedon(x, list(df.columns), val), axis = 1)
                 result['matched_on_val'] = val
 
-                # matchedon = [ key for key,value in results.items() if( value == val[0])]
-                # results+=search(dfobj.df,vals, dfobj.df.columns.values )
+
                 results+= json.loads(result.to_json(orient = 'records') )
+    if(not(results)):
+        print('no results found')
             
     return results
-        # pass
 
 
 
 
 
 
-
+## print help message
 
 def runhelp():
     print('this is a helpful message')
     input('press enter to continue\n')
     return helpcode
 
-
+## check input for key menu options
 def processinput(state:ProgramState, msg=''):
     
     inp = input(msg)
@@ -114,7 +85,7 @@ def processinput(state:ProgramState, msg=''):
         sys.exit('exitting application')
     elif(inp.lower()=='results'):
 
-        processresults(getresults(state))
+        processresults(state)
         return helpcode
     elif(inp.lower()=='save'):
         saveresults(getresults(state))
@@ -122,14 +93,13 @@ def processinput(state:ProgramState, msg=''):
     else: 
         return inp
 
-
+## save results to file
 def saveresults(results):
     try:
         f= open("results.txt", "w") 
-    #     pass
         if(not results):
             print('no results found')
-            return
+            return helpcode
         else: 
             f.write('Total results found = {}\n\n'.format(countresults(results)))
             f.write('\n')
@@ -147,11 +117,15 @@ def saveresults(results):
                         for result in result['subresults']:
                             writedetails('results.txt', result)
     except Exception as e:
-        print(e)
+        print('unknown error')
+        return
+    finally:
+        print('saved\n')
+        # print(e)
 
 
 
-
+## set file to search from 
 
 
 def setfilechoice(state):
@@ -169,22 +143,21 @@ def setfilechoice(state):
             if(op>len(state.dfobjlist)):
                 raise ValueError
             else:
-                # print(state.dfobjlist.keys())
                 print('searchfile set = {}'.format(list(state.dfobjlist.keys())[op-1]))
                 return list(state.dfobjlist.keys())[op-1]
         except Exception as e:
             print('error try again')
 
-    # return state.dfobjlist[]
-
+## run default menu
 
 def rundefault(state:ProgramState):
-    results = None
-    [print(x) for x in defaultmenuoptions]
-    option1 = processinput(state)
-    if(option1==helpcode):
-        return
     try:
+        results = None
+        [print(x) for x in defaultmenuoptions]
+        option1 = processinput(state)
+        if(option1==helpcode):
+            return helpcode
+    
         if(option1.isnumeric()):
             if(int(option1)==1):
                 #set file choice
@@ -213,7 +186,7 @@ def rundefault(state:ProgramState):
 
 
 
-
+## clear the search file
 
 def clearsearchfile(filechoice):
     if(not filechoice):
@@ -224,8 +197,9 @@ def clearsearchfile(filechoice):
     return None
 
 
+## search dataframe given key and value
+
 def simplesearch(df, key , value, filename) ->list:
-    # print(value)
     try:
         if(not isinstance(value, str)):
             processedval = value
@@ -241,12 +215,11 @@ def simplesearch(df, key , value, filename) ->list:
     except Exception as e:
         return []
 
+## start search on field
 
 def startfieldsearch(state:ProgramState,file, fields= None, vals = None):
 
 
-    #return all matching results
-    # print('hello')
     results = []
     if(not fields):
         field = processinput(state, 'Enter field to search on\n')
@@ -257,13 +230,12 @@ def startfieldsearch(state:ProgramState,file, fields= None, vals = None):
         if(len(fields)<=0):
             print('sorry field not found')
             return results
-        # if(not field in list(file.df.columns)
-        # fields = [field]
+
 
 
 
     if(not vals):
-        val = processinput(state, 'Enter value to search')
+        val = processinput(state, 'Enter value to search\n')
         if(vals == helpcode):
             return helpcode
         vals = [val]
@@ -271,24 +243,18 @@ def startfieldsearch(state:ProgramState,file, fields= None, vals = None):
         for val in vals:
             results+=simplesearch(file.df, field, val, file.name)
     return results
-    # for field in fields:
 
-    #     results = search(file, field, vals)
-    # for result in results:
-    #     for key, value in result.items():
-    #         results = search(file, key, value)
 
-    
-    
-    # totalresults = relatedsearch(file)
 
-    
-
-    
-    pass
-
+## get results from state object
 def getresults(state):
-    return state.results
+    if(state.results):
+        return state.results
+    print('no results found')
+    return helpcode
+
+
+## search using the file set
 
 def performsearch(state):
     primeresults = startfieldsearch(state, state.dfobjlist[state.filechoice])
@@ -304,14 +270,20 @@ def performsearch(state):
                 vals = [values for key, values in result.items()]
                 
                 result['subresults'] += startfieldsearch(state,obj,fields, vals)
+    if(not primeresults):
+        print('sorry no results found')
     return primeresults
 
 
+## show searchable terms
+
 def showterms(state:ProgramState, terms):
-    # [print(term for term in terms)]
     [print(term) for term in terms]
     processinput('press enter to go back')
+    return helpcode
 
+
+## run search on set file
 def runsearchonfile(state:ProgramState):
     try:
         results =None
@@ -335,8 +307,9 @@ def runsearchonfile(state:ProgramState):
                 raise ValueError
         if(option1.isalpha()):
             if(option1=='terms'):
-                showterms(state, list(state.dfobjlist[state.filechoice].df.columns.values))
-            if(option1==helpcode):
+                return showterms(state, list(state.dfobjlist[state.filechoice].df.columns.values))
+                # return helpcode
+            elif(option1==helpcode):
                 return helpcode
             else:
                 raise ValueError
@@ -349,13 +322,15 @@ def runsearchonfile(state:ProgramState):
             state.results = results
             processresults(state)
             return
-        else:
-            print('sorry no results found')
+
+
+
+## process results
 
 
 def processresults(state):
     if(not state.results):
-        print('no results found')
+        print('no results found\n')
         return
     else: 
         print('Total results found = {}'.format(countresults(state.results)))
@@ -370,6 +345,8 @@ def processresults(state):
                     for result in result['subresults']:
                         printdetails(result)
 
+##print details on console
+
 def printdetails(obj):
     for x, y in obj.items() :
         if(not x=='subresults'):
@@ -377,6 +354,9 @@ def printdetails(obj):
     [print('=', end = '') for i in range(80)]
     print('\n')
             
+
+
+## write details to file
 def writedetails(filename, obj):
     with open(filename, 'a') as f:
         for x, y in obj.items() :
@@ -385,6 +365,9 @@ def writedetails(filename, obj):
         [f.write('=') for i in range(80)]
         f.write('\n')
 
+
+## check file set
+
 def checkfilechoice(state:ProgramState):
     if(state.filechoice):
         print('\nsearchfile set = {}'.format(state.filechoice))
@@ -392,6 +375,7 @@ def checkfilechoice(state:ProgramState):
     else:
         print('no file set to search on')
     return
+## load all files from path
     
 def loadfiles(path='.//'):
     dataobjs = {}
@@ -412,6 +396,8 @@ def loadfiles(path='.//'):
             dataobjs[dfobj.name] = dfobj
         
         return dataobjs
+
+## count all results
 
 def countresults(results):
     count = 0
